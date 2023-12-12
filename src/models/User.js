@@ -1,4 +1,4 @@
-export const users = [
+export const UserModel = [
     {
         name: "Edgardo",
         age: "22"

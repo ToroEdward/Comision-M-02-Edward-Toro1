@@ -1,4 +1,4 @@
-import { users } from "./user-model.js"
+import { UserModel } from "./models./User.js";
 
 export const ctrlGetAllUsers = async (_req, res, next) => {
   try {
