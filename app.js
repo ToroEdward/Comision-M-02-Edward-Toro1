@@ -1,14 +1,20 @@
 import express from "express";
-import { ctrlGetAllPost, ctrlCreatePost } from "./src/controllers/user.controller.js";
+import morgan from "morgan";
+import cors from "cors";
+import { helmet } from "helmet";
+
+import { userRouter } from "./src/router/user.routes.js";
 
 const app = express();
 
 // Midlewares
 
 app.use(express.json());
+app.use(morgan('dev'));
+app.use(cors());
+app.use(helmet());
 
-app.get("/posts", ctrlGetAllPost)
-app.post("/posts", ctrlCreatePost)
+app.use("/users", userRouter)
 
 const port = 3001;
 
