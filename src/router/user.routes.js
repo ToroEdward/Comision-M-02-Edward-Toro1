@@ -3,7 +3,7 @@ import { ctrlCreateUser, ctrlGetAllUsers } from "../controllers/user.controller.
 
 const userRouter = Router();
 
-app.get("/", ctrlGetAllUsers)
-app.post("/", ctrlCreateUser)
+userRouter.get("/", ctrlGetAllUsers);
+userRouter.post("/", ctrlCreateUser);
 
 export { userRouter };

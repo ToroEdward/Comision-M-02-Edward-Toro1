@@ -1,4 +1,4 @@
-import { UserModel } from "./models./User.js";
+import { UserModel } from "../models/User.js";
 
 export const ctrlGetAllUsers = async (_req, res, next) => {
   try {
@@ -12,12 +12,12 @@ export const ctrlGetAllUsers = async (_req, res, next) => {
   }
 }
 
-export const ctrlCreateUser = (req, res, next) => {
-    const { name, age } = req.body;
-
-    const newUser = { name, age };
-
-    users.push(newUser);
-
-    res.sendStatus(201);
+export const ctrlCreateUser = async (req, res, next) => {
+  try {
+    const user = new UserModel(req.body);
+    await user.save();
+    res.status(201).json(user);
+  } catch (error) {
+    res.status(500).json({ error: "couldn't create user"});
+  }
 };

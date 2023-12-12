@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
-import { helmet } from "helmet";
+import helmet from "helmet";
 
 import { userRouter } from "./src/router/user.routes.js";
 
@@ -14,7 +14,7 @@ app.use(morgan('dev'));
 app.use(cors());
 app.use(helmet());
 
-app.use("/users", userRouter)
+app.use("/users", userRouter);
 
 const port = 3001;
 
