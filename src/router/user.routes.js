@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { ctrlCreateUser, ctrlGetAllUsers } from "../controllers/user.controller.js";
+import { ctrlCreateUser, ctrlLoginUser } from "../controllers/user.controller.js";
 import { body } from "express-validator"
 
 const userRouter = Router();
  
-userRouter.get("/", ctrlGetAllUsers);
+userRouter.get("/", ctrlLoginUser);
 userRouter.post("/", ctrlCreateUser);
 
 export { userRouter };
