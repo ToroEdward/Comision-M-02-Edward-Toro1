@@ -1,23 +1,30 @@
 import { UserModel } from "../models/User.js";
 
-export const ctrlGetAllUsers = async (_req, res, next) => {
-  try {
-    if (users.length < 1) {
-        return res.sendStatus(204);
-    }
 
-    res.status(200).json(users);
-  } catch (error) {
-    next("No hay users");
-  }
-}
-
-export const ctrlCreateUser = async (req, res, next) => {
+export const ctrlCreateUser = async (req, res) => {
   try {
     const user = new UserModel(req.body);
     await user.save();
     res.status(201).json(user);
   } catch (error) {
-    res.status(500).json({ error: "couldn't create user"});
+    res.status(500).json({ error: "couldn't create user" });
+  }
+};
+
+export const ctrlLoginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    const user = await UserModel.findOne({ email });
+    if(!user) return res.status(404).json({ error: "User not found" });
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) return res.status(400).json({ error: "Invalid credentials" });
+
+    const token = await createJWT({ userId: user._id });
+
+    res.status(200).json({ token, user });
+  } catch (error) {
+    res.status(500).json({ error: "couldn't login user" });
   }
 };
