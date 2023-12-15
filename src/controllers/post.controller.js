@@ -17,10 +17,10 @@ export const ctrlListPosts = async (req, res) => {
               select: ["username", "avatarURL"],
             },
         });
-        res.status(200).json(postlists);
+        return res.status(200).json(postlists);
     } catch (error) {
         console.log(error);
-        res.status(500).json({ error: "Error al obtener la lista de publicaciones" });
+        return res.status(500).json({ error: "Error al obtener la lista de publicaciones" });
     }
   };
 

@@ -1,4 +1,5 @@
 import { UserModel } from "../models/User.js";
+import * as bcrypt from "bcrypt";
 import { createJWT } from "../utils/jwt.js";
 
 

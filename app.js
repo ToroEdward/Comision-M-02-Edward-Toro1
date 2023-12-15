@@ -1,7 +1,7 @@
 import express from "express";
-import morgan from "morgan";
 import cors from "cors";
 import helmet from "helmet";
+import morgan from "morgan";
 
 import { config } from "./src/settings/config.js";
 import { startConnection } from "./src/settings/database.js";
@@ -13,9 +13,9 @@ const app = express();
 // Midlewares
 
 app.use(express.json());
-app.use(morgan('dev'));
 app.use(cors());
 app.use(helmet());
+app.use(morgan('dev'));
 
 app.use("/users", userRouter);
 
