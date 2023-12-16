@@ -1,0 +1,1 @@
+## Desarrollo de una plataforma web dedicada exclusivamente a las vivencias y relatos de viajes, donde los usuarios tengan la posibilidad de registrarse, iniciar sesión, crear publicaciones sobre viajes y participar activamente al agregar comentarios a las publicaciones de otros viajeros. ##
